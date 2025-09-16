@@ -1,0 +1,121 @@
+/* Estilos para el formulario de login y registro */
+.login-container, .register-container {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.login-container h2, .register-container h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.login-container form, .register-container form {
+    display: flex;
+    flex-direction: column;
+}
+
+.login-container label, .register-container label {
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
+}
+
+.login-container input, .register-container input, .register-container select {
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.login-container input:focus, .register-container input:focus, .register-container select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+
+.login-container .boton, .register-container .boton {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.login-container .boton:hover, .register-container .boton:hover {
+    background-color: #0056b3;
+}
+
+.login-container a, .register-container a {
+    color: #007bff;
+    text-decoration: none;
+    margin: 5px 0;
+}
+
+.login-container a:hover, .register-container a:hover {
+    text-decoration: underline;
+}
+
+/* Estilos para campos requeridos */
+input:required, select:required {
+    border-left: 3px solid #007bff;
+}
+
+input:invalid {
+    border-left: 3px solid #dc3545;
+}
+
+/* Estilos adicionales para el campo de código de confirmación */
+#codigoContainer {
+    background-color: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+    transition: all 0.3s ease;
+}
+
+#codigoContainer label {
+    color: #856404;
+    font-weight: bold;
+}
+
+#codigoContainer input {
+    border: 2px solid #ffeaa7;
+    background-color: #fff;
+}
+
+#codigoContainer input:focus {
+    border-color: #f39c12;
+    box-shadow: 0 0 5px rgba(243, 156, 18, 0.3);
+}
+
+#codigoContainer small {
+    display: block;
+    margin-top: 5px;
+    font-style: italic;
+}
+
+/* Animación para mostrar el campo */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#codigoContainer[style*="block"] {
+    animation: fadeIn 0.3s ease;
+}
