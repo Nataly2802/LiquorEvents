@@ -17,7 +17,7 @@
         <nav class="menu"> 
             <ul>
 
-                <li><a href="{{ route('inicio_sesion') }}">Iniciar Sesión</a></li>
+                <li><a href="{{ route('login') }}">Iniciar Sesión</a></li>
                 <li><a href="{{ route('catalogo') }}">Catálogo</a></li>
                 <li><a href="{{ route('contactenos') }}">Contáctenos</a></li>
                 <li><a href="{{ route('recomendaciones') }}">Recomendaciones</a></li>
