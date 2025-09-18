@@ -43,10 +43,16 @@
     <form action="{{ route('logout') }}" method="POST" class="d-inline">
         @csrf
         <button type="submit" class="nav-link btn btn-link text-danger fw-bold" style="text-decoration: none;">
+            <li class="nav-item">
+    <form action="{{ route('logout') }}" method="POST" class="d-inline">
+        @csrf
+        <button type="submit" class="nav-link btn btn-link text-danger fw-bold" style="text-decoration: none;">
             <i class="fa fa-sign-out-alt"></i> Cerrar Sesión
         </button>
     </form>
 </li>
+
+
                 </ul>
             </div>
         </div>
