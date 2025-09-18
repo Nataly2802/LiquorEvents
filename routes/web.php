@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
+
 // Dashboard general
 Route::get('/dashboard', fn() => view('dashboard'))
     ->middleware(['auth'])
@@ -50,3 +51,4 @@ Route::middleware(['auth','role:administrador'])->group(function () {
 Route::get('/administrador', fn() => view('administrador'))->name('administrador');
 Route::get('/participante', fn() => view('participante'))->name('participante');
 Route::get('/vendedor', fn() => view('vendedor'))->name('vendedor');
+
