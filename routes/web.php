@@ -12,7 +12,7 @@ Route::get('/contactenos', fn() => view('contactenos'))->name('contactenos');
 Route::get('/recomendaciones', fn() => view('recomendaciones'))->name('recomendaciones');
 
 
-Route::get('/inicio-sesion', fn() => view('auth.login'))->name('inicio-sesion');
+Route::get('/inicio_sesion', fn() => view('auth.login'))->name('inicio_sesion');
 
 
 require __DIR__.'/auth.php';
