@@ -1,4 +1,4 @@
-/* Estilos para el formulario de login y registro */
+
 .login-container, .register-container {
     max-width: 400px;
     margin: 0 auto;
@@ -64,7 +64,6 @@
     text-decoration: underline;
 }
 
-/* Estilos para campos requeridos */
 input:required, select:required {
     border-left: 3px solid #007bff;
 }
@@ -73,7 +72,7 @@ input:invalid {
     border-left: 3px solid #dc3545;
 }
 
-/* Estilos adicionales para el campo de código de confirmación */
+
 #codigoContainer {
     background-color: #fff3cd;
     border: 1px solid #ffeaa7;
@@ -104,7 +103,6 @@ input:invalid {
     font-style: italic;
 }
 
-/* Animación para mostrar el campo */
 @keyframes fadeIn {
     from {
         opacity: 0;
