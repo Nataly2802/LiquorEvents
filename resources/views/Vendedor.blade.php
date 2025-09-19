@@ -1,99 +1,126 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>LiquorEvents</title>
-  <link rel="stylesheet" href="css/index.css">
-  <style>
-    .text-center {
-      text-align: center;
-    }
-  </style>
-</head>
-<body>
+@extends('layouts.app')
 
-  <header class="text-center">
-    <h1>Empleado</h1>
-    <img src="IMG/Logo.png" width="300" height="200" alt="Logo LiquorEvents">
-    <nav class="menu"> 
-      <ul>
-        <li><a href="Inicio_sesión.html">Cerrar Sesión</a></li>
-      </ul>
-    </nav>
-  </header>
-  <br><br>
-
-  <div class="section">
-    <h2 class="text-center">Acciones del Empleado</h2>
-    <div class="card-grid">
-      <div class="card">
-        <h3>Consultar Venta</h3>
-        <p>Revisar historial de ventas realizadas.</p>
-      </div>
-      <div class="card">
-        <h3>Crear Venta</h3>
-        <p>Registrar una nueva venta al cliente.</p>
-      </div>
-      <div class="card">
-        <h3>Imprimir Ticket</h3>
-        <p>Generar comprobante de la venta.</p>
-      </div>
-      <div class="card">
-        <h3>Modificar Venta</h3>
-        <p>Editar los datos de una venta anterior.</p>
-      </div>
-      <div class="card">
-        <h3>Eliminar Venta</h3>
-        <p>Cancelar o borrar ventas inválidas.</p>
-      </div>
-      <div class="card">
-        <h3>Consultar Inventario</h3>
-        <p>Ver disponibilidad de productos.</p>
-      </div>
-      <div class="card">
-        <h3>Modificar Inventario</h3>
-        <p>Actualizar el stock de productos.</p>
-      </div>
+@section('content')
+<div class="container">
+    <h2 class="text-center mb-4">Acciones del Empleado</h2>
+    
+    <div class="row g-3">
+        <div class="col-md-4">
+            <div class="card shadow h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Consultar Venta</h5>
+                    <p class="card-text">Revisar historial de ventas realizadas.</p>
+                    <a href="#" class="btn btn-primary">Ir</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Crear Venta</h5>
+                    <p class="card-text">Registrar una nueva venta al cliente.</p>
+                    <a href="#" class="btn btn-success">Ir</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Imprimir Ticket</h5>
+                    <p class="card-text">Generar comprobante de la venta.</p>
+                    <a href="#" class="btn btn-secondary">Ir</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Modificar Venta</h5>
+                    <p class="card-text">Editar los datos de una venta anterior.</p>
+                    <a href="#" class="btn btn-warning">Ir</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Eliminar Venta</h5>
+                    <p class="card-text">Cancelar o borrar ventas inválidas.</p>
+                    <a href="#" class="btn btn-danger">Ir</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Consultar Inventario</h5>
+                    <p class="card-text">Ver disponibilidad de productos.</p>
+                    <a href="#" class="btn btn-info">Ir</a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="col-md-4">
+            <div class="card shadow h-100">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Modificar Inventario</h5>
+                    <p class="card-text">Actualizar el stock de productos.</p>
+                    <a href="#" class="btn btn-dark">Ir</a>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <div class="section">
-    <h2 class="text-center">Formulario de Venta</h2>
-    <form id="ventaForm">
-      <label for="producto">Producto</label>
-      <input type="text" id="producto" name="producto" placeholder="Cerveza Poker 330ml" required>
+    <!-- Formulario de Venta -->
+    <div class="mt-5">
+        <h2 class="text-center mb-4">Formulario de Venta</h2>
+        <form id="ventaForm" class="card shadow p-4">
+            <div class="mb-3">
+                <label for="producto" class="form-label">Producto</label>
+                <input type="text" id="producto" name="producto" class="form-control" placeholder="Cerveza Poker 330ml" required>
+            </div>
 
-      <label for="cantidad">Cantidad</label>
-      <input type="number" id="cantidad" name="cantidad" placeholder="2" min="1" required>
+            <div class="mb-3">
+                <label for="cantidad" class="form-label">Cantidad</label>
+                <input type="number" id="cantidad" name="cantidad" class="form-control" placeholder="2" min="1" required>
+            </div>
 
-      <label for="codigo">Código de Barras</label>
-      <input type="text" id="codigo" name="codigo" placeholder="987654321" required>
+            <div class="mb-3">
+                <label for="codigo" class="form-label">Código de Barras</label>
+                <input type="text" id="codigo" name="codigo" class="form-control" placeholder="987654321" required>
+            </div>
 
-      <label for="cliente">Cliente</label>
-      <input type="text" id="cliente" name="cliente" placeholder="Luis Rojas" required>
+            <div class="mb-3">
+                <label for="cliente" class="form-label">Cliente</label>
+                <input type="text" id="cliente" name="cliente" class="form-control" placeholder="Luis Rojas" required>
+            </div>
 
-      <button type="submit" class="boton">Registrar Venta</button>
-    </form>
-  </div>
+            <button type="submit" class="btn btn-success w-100">Registrar Venta</button>
+        </form>
+    </div>
+</div>
 
-  <script>
+<script>
     document.getElementById("ventaForm").addEventListener("submit", function(e) {
-      e.preventDefault();
+        e.preventDefault();
 
-      const producto = document.getElementById("producto").value.trim();
-      const cantidad = document.getElementById("cantidad").value.trim();
-      const codigo = document.getElementById("codigo").value.trim();
-      const cliente = document.getElementById("cliente").value.trim();
+        const producto = document.getElementById("producto").value.trim();
+        const cantidad = document.getElementById("cantidad").value.trim();
+        const codigo = document.getElementById("codigo").value.trim();
+        const cliente = document.getElementById("cliente").value.trim();
 
-      if (!producto || !cantidad || !codigo || !cliente) {
-        alert("Todos los campos son obligatorios.");
-        return;
-      }
+        if (!producto || !cantidad || !codigo || !cliente) {
+            alert("Todos los campos son obligatorios.");
+            return;
+        }
 
-      alert("Venta registrada correctamente");
-      this.reset(); 
+        alert("Venta registrada correctamente");
+        this.reset(); 
     });
-  </script>
-
-</body>
-</html>
+</script>
+@endsection

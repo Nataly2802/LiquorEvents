@@ -3,52 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{-- Favicon desde public/IMG --}}
   <link rel="icon" href="{{ asset('IMG/Logo.png') }}">
-  {{-- Estilos desde public/css --}}
   <link rel="stylesheet" href="{{ asset('css/index.css') }}">
-  <title>LiquorEvents</title>
+  <title>LiquorEvents - Catálogo</title>
 </head>
 <body>
   <header>
     <h1 class="titulo">Catálogo</h1>
-    {{-- Logo desde public/IMG --}}
     <img src="{{ asset('IMG/Logo.png') }}" alt="Logo LiquorEvents" class="logo" width="250" height="150">
     <nav class="menu"> 
       <ul>
-        {{-- Enlaces con rutas de Laravel --}}
-        <li><a href="{{ url('index') }}">Inicio</a></li>
-        <li><a href="{{ url('contactenos') }}">Contáctenos</a></li>
+        <li><a href="{{ route('home') }}">Inicio</a></li>
+        <li><a href="{{ route('contactenos') }}">Contáctenos</a></li>
       </ul>
     </nav>
   </header>
 
-  <div class="section">
-    <h2 class="subtitulo">Aguardiente</h2>
-    <div class="card-grid">
-      <div class="card"><h3>Aguardiente Néctar</h3><img src="{{ asset('IMG/Necta.png') }}" alt="Botella Aguardiente Néctar"></div>
-      <div class="card"><h3>Aguardiente Rosado</h3><img src="{{ asset('IMG/Rosado.png') }}" alt="Botella Aguardiente Rosado"></div>
-      <div class="card"><h3>Aguardiente Amarillo</h3><img src="{{ asset('IMG/amarillo.png') }}" alt="Botella Aguardiente Amarillo"></div>
-    </div>
-  </div>
+  <main class="container">
+    @if($productos->count() > 0)
+      {{-- Opcional: agrupar por Tipo_producto si lo quieres así --}}
+      @php $grupos = $productos->groupBy('Tipo_producto'); @endphp
 
-  <div class="section">
-    <h2 class="subtitulo">Whisky</h2>
-    <div class="card-grid">
-      <div class="card"><h3>Buchanan's</h3><img src="{{ asset('IMG/buchanan.png') }}" alt="Whisky Buchanan's"></div>
-      <div class="card"><h3>Something Special</h3><img src="{{ asset('IMG/something.png') }}" alt="Whisky Something Special"></div>
-      <div class="card"><h3>Black & White</h3><img src="{{ asset('IMG/Black.png') }}" alt="Whisky Black & White"></div>
-      <div class="card"><h3>Johnnie Walker Red Label</h3><img src="{{ asset('IMG/Red label.png') }}" alt="Whisky Johnnie Walker Red Label"></div>
-      <div class="card"><h3>Grant's</h3><img src="{{ asset('IMG/Grants.png') }}" alt="Whisky Grant's"></div>
-    </div>
-  </div>
+      @foreach($grupos as $tipo => $items)
+        <section class="section">
+          <h2 class="subtitulo">{{ $tipo ?: 'General' }}</h2>
+          <div class="card-grid">
+            @foreach($items as $prod)
+              <article class="card">
+                <h3>{{ $prod->Nombre }}</h3>
+                {{-- Manejo de imagen: chequea si el archivo existe en public/IMG --}}
+                @php
+                  $foto = $prod->Foto;
+                  $path = null;
+                  if($foto) {
+                      // si en DB guardaste solo el nombre (ej: resize_1.jpeg)
+                      $possible = public_path('IMG/' . $foto);
+                      if(file_exists($possible)) {
+                          $path = asset('IMG/' . $foto);
+                      } else {
+                          // si ya guardaste 'IMG/...' en DB
+                          if(file_exists(public_path($foto))) {
+                              $path = asset($foto);
+                          }
+                      }
+                  }
+                  if(!$path) {
+                      $path = asset('IMG/default.png'); // coloca un default.png en public/IMG
+                  }
+                @endphp
 
-  <div class="section">
-    <h2 class="subtitulo">Ron</h2>
-    <div class="card-grid">
-      <div class="card"><h3>Ron Viejo de Caldas 5 años</h3><img src="{{ asset('IMG/Caldas 5 años.png') }}" alt="Ron Viejo de Caldas 5 años"></div>
-      <div class="card"><h3>Ron Viejo de Caldas Esencial</h3><img src="{{ asset('IMG/Caldas escencial.png') }}" alt="Ron Viejo de Caldas Esencial"></div>
-    </div>
-  </div>
+                <img src="{{ $path }}" alt="{{ $prod->Nombre }}" style="max-width:220px; display:block; margin:0.5rem auto;">
+
+                <p>Precio: {{ $prod->Precio_venta ?? '—' }}</p>
+                <p>Stock: {{ $prod->Stock_total ?? '—' }}</p>
+              </article>
+            @endforeach
+          </div>
+        </section>
+      @endforeach
+
+    @else
+      <p>No hay productos registrados.</p>
+    @endif
+  </main>
 </body>
 </html>
