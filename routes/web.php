@@ -51,3 +51,11 @@ Route::get('/administrador', fn() => view('administrador'))->name('administrador
 Route::get('/participante', fn() => view('participante'))->name('participante');
 Route::get('/vendedor', fn() => view('vendedor'))->name('vendedor');
 
+use App\Http\Controllers\ContactoController;
+
+Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto.index');
+Route::post('/contacto', [ContactoController::class, 'store'])->name('contacto.store');
+
+
+Route::resource('clientes', ClienteController::class);
+
